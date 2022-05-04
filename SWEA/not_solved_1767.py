@@ -47,6 +47,9 @@ func2. 각 코어별로 우하좌상 반복문 실시하여 리스트 변화시�
 func3. 코어의 개수와 각 코어들이 변화시킨 횟수가 같다면, 그 때 카운트를 실시시킨다.
 
 """
+import sys
+sys.stdin = open('input.txt')
+
 def where_core(lst):
     core = []
     for i in range(1, len(lst)-1):
