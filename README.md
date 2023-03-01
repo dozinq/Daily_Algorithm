@@ -9,9 +9,21 @@
 
 #### 알고리즘 문제 풀이를 통해 깨달은 점 혹은 잊기 쉬운 점에 대한 개인적인 정리.
 
+1. [Unicode value return](#idx-1)
+2. [Dictionary](#idx-2)
+3. [Backtracking](#idx-3)
+4. [Binary Search](#idx-4)
+5. [Copy, Deepcopy](#idx-5)
+6. [Dijkstra's Algorithm](#idx-6)
+7. [heapq](#idx-7)
+8. [Kruskal's Algorithm](#idx-8)
+9. [Union-Find](#idx-9)
 
 
-> - Unicode value return - BOJ15829
+
+<br>
+
+> - Unicode value return - BOJ15829 <a id="idx-1"></a>
 >
 >   - ord()는 숫자에 대응하는 유니코드 숫자를 반환한다. 사용할 때마다 print()로 출력 후 확인하여 사용할 수 있도록 하자.
 >
@@ -20,9 +32,9 @@
 >     ord('z') == 122
 >     ```
 
+</br>
 
-
-> - Dictionary - BOJ1620
+> - Dictionary - BOJ1620<a id="idx-2"></a>
 >
 >   - key를 이용해, value를 찾아낼 수 있다. 리스트와 마찬가지로 dict[key]를 입력한다면 value값을 반환하지만, value값이 존재하지 않을 경우를 대비해, dict.get(key)를 입력하여 오류를 방지하는 것이 낫다.
 >
@@ -31,7 +43,7 @@
 >     1. ```python
 >        # dict라는 이름의 딕셔너리 객체가 존재한다면,
 >        dict_reverse = {}
->        
+>                      
 >        for idx in range(len(dict) + 1):
 >            dict_reverse[dict.get(idx)] = idx
 >        ```
@@ -46,16 +58,16 @@
 >            dict_reverse[tmp] = idx
 >        ```
 
+</br>
 
-
-> - 백 트래킹
+> - Backtracking<a id="idx-3"></a>
 >   - 해를 찾는 도중 해가 아니어서 막히면, 되돌아가서 다시 해를 찾아가는 기법. 최적화 문제와 결정 문제를 푸는 방법이다. (ex. 순열과 조합에 대한 구현)
 >   - 순열과 조합에 관한 수학적인 정리 - BOJ9095, BOJ2407
 >     - 관련한 사이트 링크 : *https://coding-factory.tistory.com/606*
 
+</br>
 
-
-> - Binary Search - BOJ2805
+> - Binary Search - BOJ2805<a id="idx-4"></a>
 >
 >   - O(logN)
 >
@@ -63,7 +75,7 @@
 >     N, M = map(int, input().split())
 >     data = list(map(int, input().split()))
 >     start, end = 1, sum(data)
->     
+>             
 >     while start <= end:
 >         mid = (start + end) // 2
 >         cnt = 0
@@ -74,19 +86,19 @@
 >             start = mid + 1
 >         else:
 >             end = mid - 1
->     
+>             
 >     print(end)
 >     ```
 
+</br>
 
-
-> - Copy, Deepcopy
+> - Copy, Deepcopy<a id="idx-5"></a>
 >   - 리스트를 '슬라이싱[:]' 하거나 'copy()' 메소드를 사용하여 1차원 배열을 복제할 수 있다.
 >   - copy 라이브러리를 import하고 'deepcopy()' 메소드를 사용하여 2차원 배열을 복제할 수 있다.
 
+</br>
 
-
-> - Dijkstra - BOJ1916
+> - Dijkstra's Algorithm - BOJ1916<a id="idx-6"></a>
 >
 >   - 최단 경로 탐색 알고리즘으로 음의 간선을 포함하지 않는다면 사용하기 적합하다.
 >
@@ -102,7 +114,7 @@
 >
 >     ```python
 >     import heapq  # 우선순위 큐 구현을 위함
->     
+>             
 >     # 입력
 >     N = int(input())  # node 개수
 >     M = int(input())  # edge 개수
@@ -111,21 +123,21 @@
 >         a, b, c = map(int, input().split())
 >         graph[a].append((b, c))  # 도착지, 가중치
 >     start, end = map(int, input().split())  # 출발지 목적지
->     
+>             
 >     # 다익스트라 최적경로 탐색
 >     def dijkstra(graph, start):
 >         distances = [int(1e9)] * (N+1)  # 처음 초기값은 무한대
 >         distances[start] = 0  # 시작 노드까지의 거리는 0
 >         queue = []
 >         heapq.heappush(queue, [distances[start], start])  # 시작 노드부터 탐색 시작
->     
+>             
 >         while queue:  # queue에 남아있는 노드가 없을 때까지 탐색
 >             dist, node = heapq.heappop(queue)  # 탐색할 노드, 거리
->     
+>             
 >             # 기존 최단거리보다 멀다면 무시
 >             if distances[node] < dist:
 >                 continue
->     
+>             
 >             # 노드와 연결된 인접노드 탐색
 >             for next_node, next_dist in graph[node]:
 >                 distance = dist + next_dist  # 인접노드까지의 거리
@@ -133,14 +145,14 @@
 >                     distances[next_node] = distance
 >                     heapq.heappush(queue, [distance, next_node])  # 다음 인접 거리를 계산 하기 위해 큐에 삽입
 >         return distances
->     
+>             
 >     dist_start = dijkstra(graph, start)
 >     print(dist_start[end])
 >     ```
 
+</br>
 
-
-> - heapq
+> - heapq<a id="idx-7"></a>
 >
 >   - Python의 heapq
 >
@@ -148,21 +160,35 @@
 >
 >     ```python
 >     import heapq
->     
+>             
 >     # 힙 생성.
 >     heap = []
 >     # 힙에 item 추가.
 >     heapq.heappush(heap, 50)
 >     # 힙에서 가장 작은 원소를 반환. (-> 비어있는 경우 IndexError)
 >     tmp = heapq.heappop(heap)
->     
+>             
 >     # 이미 생성된 리스트를 힙 자료형으로 변환.
 >     mylst = [50, 10, 20]
 >     heapq.heapify(mylst)
->     
+>             
 >     # [10, 50, 20]의 최소힙 형태로 변환.
 >     print(mylst)
 >     ```
 >
 >     - 관련한 사이트 링크 : *https://littlefoxdiary.tistory.com/3*
 
+</br>
+
+> - Kruskal's Algorithm - BOJ1197<a id="idx-8"></a>
+>   - 그리디 알고리즘의 일종으로, 그래프 간선들을 가중치의 오름차순으로 정렬하고, 사이클을 형성하지 않는 선에서 정렬된 순서대로 간선을 선택한다.
+>   - 최소 신장  트리(Minimum Spanning Tree, MST)를 구하기 위한 알고리즘으로 그의 예시
+>     - 여러 개의 네트워크 지점들이 있는데, 모든 지점들을 유선으로 연결화되 연결선의 총 길이가 최소가 되어야 하는 문제
+>     - 도시들을 모두 연결하되, 연결하는 도로의 길이의 합이 최소가 되어야 하는 문제
+
+</br>
+
+> - Union-Find<a id="idx-9"></a>
+>   - 
+
+</br>
