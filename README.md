@@ -181,6 +181,20 @@
 </br>
 
 > - Kruskal's Algorithm - BOJ1197<a id="idx-8"></a>
+>
+>   ```python
+>   # 오름차순으로 정렬되어 있는 data 배열을 활용한다.
+>   def kruskal(cnt):
+>       ans = 0
+>       for node_1, node_2, val in data:
+>           if find(node_1) != find(node_2):
+>               union(node_1, node_2)
+>               ans += val
+>               cnt -= 1
+>           if cnt == 0:
+>               return ans
+>   ```
+>
 >   - 그리디 알고리즘의 일종으로, 그래프 간선들을 가중치의 오름차순으로 정렬하고, 사이클을 형성하지 않는 선에서 정렬된 순서대로 간선을 선택한다.
 >   - 최소 신장  트리(Minimum Spanning Tree, MST)를 구하기 위한 알고리즘으로 그의 예시
 >     - 여러 개의 네트워크 지점들이 있는데, 모든 지점들을 유선으로 연결화되 연결선의 총 길이가 최소가 되어야 하는 문제
@@ -189,11 +203,28 @@
 
 </br>
 
-> - Union-Find<a id="idx-9"></a>
+> - Union-Find - BOJ20040<a id="idx-9"></a>
+>   
+>   ```python
+>   def find(x):
+>       if parent[x] != x:
+>           return find(parent[x])
+>       return x
+>   
+>   def union(a, b):
+>       a = find(a)
+>       b = find(b)
+>       if a < b:
+>           parent[b] = a
+>       else:
+>           parent[a] = b
+>   ```
+>   
 >   - Disjoint Set(서로소 집합)을 표현하는 자료구조
 >   - 서로 다른 두 집합을 병합하는 Union 연산
 >   - 집합 원소가 어떤 집합에 속해있는지 찾는 Find 연산
 >   - 이를 이용한다면, 동일한 부모 노드를 가지고 있는 자식 노드끼리는 사이클을 형성하게 되므로 이을 수 없다는 것을 알 수 있다.
+>   
 >   - 관련한 사이트 링크 : *https://0x15.tistory.com/34*
 
 </br>
