@@ -18,6 +18,7 @@
 7. [heapq](#idx-7)
 8. [Kruskal's Algorithm](#idx-8)
 9. [Union-Find](#idx-9)
+10. [Topological Sort](#idx-10)
 
 
 
@@ -228,3 +229,41 @@
 >   - 관련한 사이트 링크 : *https://0x15.tistory.com/34*
 
 </br>
+
+> - Topological Sort - BOJ2252<a id="idx-10"></a>
+>
+>   ```python
+>   import sys
+>   from collections import deque
+>   
+>   n, m = map(int, sys.stdin.readline().split())
+>   
+>   graph = [[] for _ in range(n+1)]
+>   inDegree = [0 for _ in range(n+1)]
+>   queue = deque()
+>   ans = []
+>   
+>   for i in range(m):
+>       a, b = map(int, sys.stdin.readline().split())
+>       graph[a].append(b)
+>       inDegree[b] += 1
+>   
+>   # 가장 위에 아무것도 없는 요소를 추가한다.
+>   for i in range(1, n+1):
+>       if inDegree[i] == 0:
+>           queue.append(i)
+>   
+>   # 큐를 돌면서 그 다음 순위의 노드를 저장할 수 있도록 한다.
+>   while queue:
+>       tmp = queue.popleft()
+>       ans.append(tmp)
+>       for i in graph[tmp]:
+>           inDegree[i] -= 1
+>           if inDegree[i] == 0:
+>               queue.append(i)
+>   
+>   print(*ans)
+>   ```
+>
+>   - '위상 정렬'이라고 하며, 비순환 방향 그래프에서 정점을 선형으로 정렬하게 된다.
+>   - 우선도를 체크할 수 있도록 하여, 결과적으로 순위의 순서대로 정렬할 수 있게 한다.
