@@ -6,6 +6,9 @@ def check_square(x, y):
         return True
     return False
 
+def rotate_90(len, x, y):
+    return y, (len-1)-x
+
 def art_test():
     # group_art는 그룹을 나타내는 숫자들이 적혀있는 새로운 배열이다.
     group_art = [list(0 for _ in range(n)) for _ in range(n)]
@@ -83,18 +86,26 @@ def turn_art():
                 tmp_dist = n//2
                 # 2사분면
                 if i < (n-1) // 2 and j < (n-1) // 2:
-                    new_art[j][(tmp_dist-1)-i] = data[i][j]
+                    new_i, new_j = rotate_90(tmp_dist, i, j)
+                    new_art[new_i][new_j] = data[i][j]
+                    # new_art[j][(tmp_dist-1)-i] = data[i][j]
                 # 3사분면
                 elif i > (n-1) // 2 and j < (n-1) // 2:
+                    new_i, new_j = rotate_90(tmp_dist, i-(n+1)//2, j)
+                    new_art[new_i+(n+1)//2][new_j] = data[i][j]
                     # i, j -> i-(n+1)//2, j -> j, (tmp_dist-1)-(i-(n+1)//2) -> 
-                    new_art[j+(n+1)//2][(tmp_dist-1)-(i-(n+1)//2)] = data[i][j]
+                    # new_art[j+(n+1)//2][(tmp_dist-1)-(i-(n+1)//2)] = data[i][j]
                 # 4사분면
                 elif i > (n-1) // 2 and j > (n-1) // 2:
+                    new_i, new_j = rotate_90(tmp_dist, i-(n+1)//2, j-(n+1)//2)
+                    new_art[new_i+(n+1)//2][new_j+(n+1)//2] = data[i][j]
                     # i, j -> i-(n+1)//2, j-(n+1)//2 -> j-(n+1)//2, (tmp_dist-1)-(i-(n+1)//2) ->
-                    new_art[j][(tmp_dist-1)-(i-(n+1)//2)+(n+1)//2] = data[i][j]
+                    # new_art[j][(tmp_dist-1)-(i-(n+1)//2)+(n+1)//2] = data[i][j]
                 # 1사분면
                 elif i < (n-1) // 2 and j > (n-1) // 2:
-                    new_art[j - (n+1)//2][(tmp_dist-1) - i + (n+1)//2] = data[i][j]
+                    new_i, new_j = rotate_90(tmp_dist, i, j-(n+1)//2)
+                    new_art[new_i][new_j+(n+1)//2] = data[i][j]
+                    # new_art[j - (n+1)//2][(tmp_dist-1) - i + (n+1)//2] = data[i][j]
     data = new_art
     return
 
