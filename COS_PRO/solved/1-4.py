@@ -3,7 +3,13 @@
 
 def solution(num):
     # Write code here.
-    answer = 0
+    answer = ''
+    for n in str(num+1):
+        if n == '0':
+            answer += '1'
+        else:
+            answer += n
+    answer = int(answer)
     return answer
 
 
