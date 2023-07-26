@@ -14,7 +14,7 @@ class Food:
         self.name = name
         self.price = price
         
-class PizzaStore@@@:
+class PizzaStore(DeliveryStore):
     def __init__(self):
         menu_names = ["Cheese", "Potato", "Shrimp", "Pineapple", "Meatball"]
         menu_prices = [11100, 12600, 13300, 21000, 19500];
@@ -24,11 +24,11 @@ class PizzaStore@@@:
         
         self.order_list = []
     
-    def @@@:
+    def set_order_list(self, order_list):
         for order in order_list:
             self.order_list.append(order)
 
-    def @@@:
+    def get_total_price(self):
         total_price = 0
         for order in self.order_list:
             for menu in self.menu_list:
@@ -42,10 +42,3 @@ def solution(order_list):
     delivery_store.set_order_list(order_list)
     total_price = delivery_store.get_total_price()
     return total_price
-
-#The following is code to output testcase.
-order_list = ["Cheese", "Pineapple", "Meatball"]
-ret = solution(order_list)
-
-#Press Run button to receive output. 
-print("Solution: return value of the function is", ret, ".")
