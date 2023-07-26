@@ -1,5 +1,5 @@
 from abc import *
- 
+
 class DeliveryStore(metaclass=ABCMeta):
     @abstractmethod
     def set_order_list(self, order_list):
@@ -14,7 +14,7 @@ class Food:
         self.name = name
         self.price = price
         
-class PizzaStore(DeliveryStore):
+class PizzaStore:
     def __init__(self):
         menu_names = ["Cheese", "Potato", "Shrimp", "Pineapple", "Meatball"]
         menu_prices = [11100, 12600, 13300, 21000, 19500];
@@ -42,3 +42,10 @@ def solution(order_list):
     delivery_store.set_order_list(order_list)
     total_price = delivery_store.get_total_price()
     return total_price
+
+#The following is code to output testcase.
+order_list = ["Cheese", "Pineapple", "Meatball"]
+ret = solution(order_list)
+
+#Press Run button to receive output. 
+print("Solution: return value of the function is", ret, ".")
