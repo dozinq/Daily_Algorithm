@@ -13,7 +13,7 @@ def solution(recordA, recordB):
         elif recordA[i] == func(recordB[i]):
             cnt = cnt + 3
         else:
-            cnt = cnt - 1
+            cnt = max(0, cnt - 1)
     return cnt
 
 #The following is code to output testcase. The code below is correct and you shall correct solution function.
