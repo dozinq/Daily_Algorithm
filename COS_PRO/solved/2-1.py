@@ -7,21 +7,21 @@ class Book(metaclass=ABCMeta):
         pass
     
     
-class ComicBook(@@@):
-    @@@:
+class ComicBook(Book):
+    def get_rental_price(self, day):
         cost = 500
         day -= 2
         if day > 0:
-            cost += @@@
+            cost += 200 * day
         return cost
     
     
-class Novel(@@@):
-    @@@:
+class Novel(Book):
+    def get_rental_price(self, day):
         cost = 1000
         day -= 3
         if day > 0:
-            cost += @@@
+            cost += 300 * day
         return cost
     
     
