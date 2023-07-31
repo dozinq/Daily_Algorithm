@@ -23,9 +23,9 @@ def func_c(first, second):
 def solution(arrA, arrB):
     if len(arrA) != len(arrB):
         return False
-    if func_@@@(@@@):
-        arrA_temp = func_@@@(@@@)
-        if func_@@@(@@@):
+    if func_b(arrA, arrB):
+        arrA_temp = func_a(arrA)
+        if func_c(arrA_temp, arrB):
             return True
     return False
 
