@@ -6,7 +6,7 @@ def create_words(lev, s):
     words.append(s)
     for i in range(0, 5):
         if lev < 5:
-            create_words(lev, s + VOWELS[i])
+            create_words(lev+1, s + VOWELS[i])
 
 def solution(word):
     global words
