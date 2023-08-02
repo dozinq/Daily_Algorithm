@@ -42,12 +42,12 @@ def func_c(matrix):
 
 def solution(matrix):
     answer = []
-    coords = func_@@@(@@@)
-    nums = func_@@@(@@@)
+    coords = func_b(matrix)
+    nums = func_a(matrix)
 
     matrix[coords[0][0]][coords[0][1]] = nums[0]
     matrix[coords[1][0]][coords[1][1]] = nums[1]
-    if func_@@@(@@@):
+    if func_c(matrix):
         for i in range(0, 2):
             answer.append(coords[i][0] + 1)
             answer.append(coords[i][1] + 1)
