@@ -9,7 +9,7 @@ def solution(s):
         else:
             answer += previous + str(counter)
             counter = 1
-            previous = s[0]
+            previous = alphabet
     answer += previous + str(counter)
     return answer
 
