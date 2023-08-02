@@ -2,7 +2,7 @@ def solution(one_day_price, multi_day, multi_day_price, n):
     if one_day_price * multi_day <= multi_day_price:
         return n * one_day_price
     else:
-        return (n % multi_day) * multi_day_price + (n // multi_day) * one_day_price
+        return (n % multi_day) * one_day_price + (n // multi_day) * multi_day_price
         
 # 아래는 테스트케이스 출력을 해보기 위한 코드입니다. 아래에는 잘못된 부분이 없으니, 위의 코드만 수정하세요.
 one_day_price1 = 3
