@@ -1,8 +1,8 @@
 def solution(n):
     answer = ''
     for i in range(n):
-        answer += str(@@@)
-        answer = answer[@@@]
+        answer += str(i+1)
+        answer = answer[::-1]
     return answer
 
 #아래는 테스트케이스 출력을 해보기 위한 코드입니다.
