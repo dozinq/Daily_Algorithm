@@ -230,7 +230,7 @@
 
 </br>
 
-> - Topological Sort - BOJ2252<a id="idx-10"></a>
+> - Topological Sort - BOJ2252, BOJ1005<a id="idx-10"></a>
 >
 >   ```python
 >   import sys
